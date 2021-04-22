@@ -7,11 +7,11 @@ app.get('/', (request, response) => {
     response.send("Api is running")
 })
 
-app.get('/api/', (request, response) => {
+app.get('/api/products', (request, response) => {
     response.json(products)
 })
 
-app.get('/api/:id', (request, response) => {
+app.get('/api/products/:id', (request, response) => {
     const product = products.find( p => p._id === request.params.id)
     response.json(product)
 })
