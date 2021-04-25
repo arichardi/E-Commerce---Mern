@@ -3,7 +3,7 @@ const app = express()
 const dotenv = require('dotenv')
 const connectDB = require('./config/db')
 
-const products = require('./data/products')
+const productRoutes = require('./Routes/productRoutes')
 
 dotenv.config()
 connectDB()
@@ -12,14 +12,7 @@ app.get('/', (request, response) => {
     response.send("Api is running")
 })
 
-app.get('/api/products', (request, response) => {
-    response.json(products)
-})
-
-app.get('/api/products/:id', (request, response) => {
-    const product = products.find( p => p._id === request.params.id)
-    response.json(product)
-})
+app.use('/api/products', productRoutes)
 
 const PORT = process.env.PORT || 5000
 
