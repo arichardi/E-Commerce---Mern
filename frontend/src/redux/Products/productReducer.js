@@ -1,6 +1,12 @@
 import { PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL} from './productsTypes'
 
-export const productListReducer = (state = { products: []}, action) => {
+const productsInitialState = {
+    loading: false,
+    products: [],
+    error: ''
+}
+
+const productListReducer = ( state = productsInitialState, action) => {
     switch(action.type) {
         case PRODUCT_LIST_REQUEST:
             return { loading: true, products: []}
@@ -12,3 +18,5 @@ export const productListReducer = (state = { products: []}, action) => {
             return state
     }
 }
+
+export default productListReducer
